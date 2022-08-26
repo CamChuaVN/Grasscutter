@@ -83,7 +83,7 @@ public final class CommandMap {
         return new LinkedList<>(this.annotations.values());
     }
 
-    public HashMap<String, Command> getAnnotations() {
+    public Map<String, Command> getAnnotations() {
         return new LinkedHashMap<>(this.annotations);
     }
 
@@ -96,8 +96,8 @@ public final class CommandMap {
         return new LinkedList<>(this.commands.values());
     }
 
-    public HashMap<String, CommandHandler> getHandlers() {
-        return new LinkedHashMap<>(this.commands);
+    public Map<String, CommandHandler> getHandlers() {
+        return this.commands;
     }
 
     /**
@@ -253,16 +253,19 @@ public final class CommandMap {
         Command.TargetRequirement targetRequirement = annotation.targetRequirement();
         if (targetRequirement != Command.TargetRequirement.NONE) {
             if (targetPlayer == null) {
-                CommandHandler.sendTranslatedMessage(null, "commands.execution.need_target");
+                handler.sendUsageMessage(player);
+                CommandHandler.sendTranslatedMessage(player, "commands.execution.need_target");
                 return;
             }
 
             if ((targetRequirement == Command.TargetRequirement.ONLINE) && !targetPlayer.isOnline()) {
+                handler.sendUsageMessage(player);
                 CommandHandler.sendTranslatedMessage(player, "commands.execution.need_target_online");
                 return;
             }
 
             if ((targetRequirement == Command.TargetRequirement.OFFLINE) && targetPlayer.isOnline()) {
+                handler.sendUsageMessage(player);
                 CommandHandler.sendTranslatedMessage(player, "commands.execution.need_target_offline");
                 return;
             }
