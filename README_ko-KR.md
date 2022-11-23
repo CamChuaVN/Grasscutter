@@ -3,7 +3,7 @@
 
 <div align="center"><a href="https://discord.gg/T5vZU6UyeG"><img alt="Discord - Grasscutter" src="https://img.shields.io/discord/965284035985305680?label=Discord&logo=discord&style=for-the-badge"></a></div>
 
-[EN](README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [FR](README_fr-FR.md) | [ES](README_es-ES.md) | [HE](README_HE.md) | [RU](README_ru-RU.md) | [PL](README_pl-PL.md) | [ID](README_id-ID.md) | [KR](README_ko-KR.md) | [FIL/PH](README_fil-PH.md) | [NL](README_NL.md) | [JP](README_ja-JP.md)
+[EN](README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [FR](README_fr-FR.md) | [ES](README_es-ES.md) | [HE](README_HE.md) | [RU](README_ru-RU.md) | [PL](README_pl-PL.md) | [ID](README_id-ID.md) | [KR](README_ko-KR.md) | [FIL/PH](README_fil-PH.md) | [NL](README_NL.md) | [JP](README_ja-JP.md) | [IT](README_it-IT.md)
 
 **주의 :** 우리는 항상 프로젝트에 기여하는 사람들을 환영합니다. 기여를 하기 전, [행동 지침](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md)을 주의 깊게 읽어주세요.
 
@@ -63,7 +63,7 @@
 
     - Fiddler Classic : Fiddler Classic을 실행한 후, Setting에서 `Decrypt https traffic` 옵션을 켜고, Tools -> Options -> Connections에 있는 기본 포트를 `8888`을 제외한 다른 포트로 지정합니다. 그리고 [이 스크립트](https://github.lunatic.moe/fiddlerscript)를 불러옵니다.
 
-    - [호스트 파일](https://github.com/Melledy/Grasscutter/wiki/Running#traffic-route-map)
+    - [호스트 파일](https://github.com/Grasscutters/Grasscutter/wiki/Running#traffic-route-map)
 
 2. 네트워크 프록시를 `127.0.0.1:8080` 로 설정하거나 지정한 프록시 포트로 설정합니다.
 

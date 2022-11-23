@@ -50,6 +50,7 @@ public class Scene {
 
     @Getter @Setter private int autoCloseTime;
     @Getter private int time;
+    private long startTime;
 
     @Getter private SceneScriptManager scriptManager;
     @Getter @Setter private WorldChallenge challenge;
@@ -65,6 +66,7 @@ public class Scene {
         this.entities = new ConcurrentHashMap<>();
 
         this.time = 8 * 60;
+        this.startTime = System.currentTimeMillis();
         this.prevScene = 3;
 
         this.spawnedEntities = ConcurrentHashMap.newKeySet();
@@ -101,6 +103,10 @@ public class Scene {
 
     public void changeTime(int time) {
         this.time = time % 1440;
+    }
+
+    public int getSceneTime() {
+        return (int) (System.currentTimeMillis() - this.startTime);
     }
 
     public void setDungeonData(DungeonData dungeonData) {
@@ -235,7 +241,11 @@ public class Scene {
     }
 
     private GameEntity removeEntityDirectly(GameEntity entity) {
-        return getEntities().remove(entity.getId());
+        var removed = getEntities().remove(entity.getId());
+        if (removed != null) {
+            removed.onRemoved();//Call entity remove event
+        }
+        return removed;
     }
 
     public void removeEntity(GameEntity entity) {
@@ -264,15 +274,8 @@ public class Scene {
     }
 
     public void showOtherEntities(Player player) {
-        List<GameEntity> entities = new LinkedList<>();
         GameEntity currentEntity = player.getTeamManager().getCurrentAvatarEntity();
-
-        for (GameEntity entity : this.getEntities().values()) {
-            if (entity == currentEntity) {
-                continue;
-            }
-            entities.add(entity);
-        }
+        List<GameEntity> entities = this.getEntities().values().stream().filter(entity -> entity != currentEntity).toList();
 
         player.sendPacket(new PacketSceneEntityAppearNotify(entities, VisionType.VISION_TYPE_MEET));
     }
@@ -412,8 +415,8 @@ public class Scene {
         }
 
         // Todo
-        List<GameEntity> toAdd = new LinkedList<>();
-        List<GameEntity> toRemove = new LinkedList<>();
+        List<GameEntity> toAdd = new ArrayList<>();
+        List<GameEntity> toRemove = new ArrayList<>();
         var spawnedEntities = this.getSpawnedEntities();
         for (SpawnDataEntry entry : visible) {
             // If spawn entry is in our view and hasnt been spawned/killed yet, we should spawn it

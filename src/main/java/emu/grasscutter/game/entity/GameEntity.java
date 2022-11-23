@@ -33,7 +33,7 @@ public abstract class GameEntity {
     @Getter @Setter private int configId;
     @Getter @Setter private int groupId;
 
-    private MotionState moveState;
+    @Getter @Setter private MotionState motionState;
     @Getter @Setter private int lastMoveSceneTimeMs;
     @Getter @Setter private int lastMoveReliableSeq;
 
@@ -45,7 +45,7 @@ public abstract class GameEntity {
 
     public GameEntity(Scene scene) {
         this.scene = scene;
-        this.moveState = MotionState.MOTION_STATE_NONE;
+        this.motionState = MotionState.MOTION_STATE_NONE;
     }
 
     public int getEntityType() {
@@ -84,14 +84,6 @@ public abstract class GameEntity {
 
     public abstract Position getRotation();
 
-    public MotionState getMotionState() {
-        return moveState;
-    }
-
-    public void setMotionState(MotionState moveState) {
-        this.moveState = moveState;
-    }
-
     public void setFightProperty(FightProperty prop, float value) {
         this.getFightProperties().put(prop.getId(), value);
     }
@@ -113,13 +105,10 @@ public abstract class GameEntity {
     }
 
     public void addAllFightPropsToEntityInfo(SceneEntityInfo.Builder entityInfo) {
-        for (Int2FloatMap.Entry entry : this.getFightProperties().int2FloatEntrySet()) {
-            if (entry.getIntKey() == 0) {
-                continue;
-            }
-            FightPropPair fightProp = FightPropPair.newBuilder().setPropType(entry.getIntKey()).setPropValue(entry.getFloatValue()).build();
-            entityInfo.addFightPropList(fightProp);
-        }
+        this.getFightProperties().forEach((key, value) -> {
+            if (key == 0) return;
+            entityInfo.addFightPropList(FightPropPair.newBuilder().setPropType(key).setPropValue(value).build());
+        });
     }
 
     protected MotionInfo getMotionInfo() {
@@ -216,6 +205,10 @@ public abstract class GameEntity {
      * Called when this entity is added to the world
      */
     public void onCreate() {
+
+    }
+
+    public void onRemoved() {
 
     }
 

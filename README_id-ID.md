@@ -3,7 +3,7 @@
 
 <div align="center"><a href="https://discord.gg/T5vZU6UyeG"><img alt="Discord - Grasscutter" src="https://img.shields.io/discord/965284035985305680?label=Discord&logo=discord&style=for-the-badge"></a></div>
 
-[EN](README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [FR](README_fr-FR.md) | [ES](README_es-ES.md) | [HE](README_HE.md) | [RU](README_ru-RU.md) | [PL](README_pl-PL.md) | [ID](README_id-ID.md) | [KR](README_ko-KR.md) | [FIL/PH](README_fil-PH.md) | [NL](README_NL.md) | [JP](README_ja-JP.md)
+[EN](README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [FR](README_fr-FR.md) | [ES](README_es-ES.md) | [HE](README_HE.md) | [RU](README_ru-RU.md) | [PL](README_pl-PL.md) | [ID](README_id-ID.md) | [KR](README_ko-KR.md) | [FIL/PH](README_fil-PH.md) | [NL](README_NL.md) | [JP](README_ja-JP.md) | [IT](README_it-IT.md)
 
 **Perhatian:** Kami selalu menyambut kontributor untuk proyek ini. Sebelum menambahkan kontribusi Anda, harap baca [Kode Etik](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md) kami.
 
@@ -63,7 +63,7 @@
 
     - Fiddler Classic: Jalankan Fiddler Classic, nyalakan `Decrypt https traffic` dalam setting dan ubah port default di sana (Tools -> Options -> Connections) ke apa pun selain `8888`, dan muat [skrip ini](https://github.lunatic.moe/fiddlerscript).
 
-    - [File host](https://github.com/Melledy/Grasscutter/wiki/Running#traffic-route-map)
+    - [File host](https://github.com/Grasscutters/Grasscutter/wiki/Running#traffic-route-map)
 
 2. Atur proxy jaringan ke `127.0.0.1:8080` atau port proxy yang anda tentukan.
 
